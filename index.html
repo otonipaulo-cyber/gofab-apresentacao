@@ -1,328 +1,221 @@
-html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOFAB V2 - Homologação de Missões Internacionais</title>
-    <!-- Tailwind CSS -->
+    <title>GOFAB - Homologação da Versão 2</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        fabDark: '#0B132A',
-                        fabNavy: '#0A192F',
-                        fabBlue: '#1E3A8A',
-                        fabAccent: '#2563EB',
-                        fabGreen: '#10B981',
-                        fabEmerald: '#059669',
-                        fabRed: '#EF4444',
-                        fabAmber: '#F59E0B'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        .slide {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
-            transform: translateY(12px);
-        }
-        .slide.active {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .glow-box-green {
-            box-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
-        }
-        .glow-box-blue {
-            box-shadow: 0 0 25px rgba(37, 99, 235, 0.25);
-        }
-        /* Scrollbar customizável */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0b132a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 3px;
-        }
+        .slide { display: none; }
+        .slide.active { display: flex; }
     </style>
 </head>
-<body class="bg-fabDark text-slate-100 font-sans h-screen w-screen overflow-hidden flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between font-sans selection:bg-cyan-500 selection:text-white">
 
-    <!-- Cabeçalho Principal -->
-    <header class="w-full bg-slate-900/90 border-b border-slate-800 px-6 py-3.5 flex justify-between items-center z-20 backdrop-blur">
+    <!-- Top Bar -->
+    <header class="bg-slate-800 border-b border-slate-700 px-6 py-4 flex justify-between items-center shadow-md">
         <div class="flex items-center space-x-3">
-            <div class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white px-3 py-1.5 rounded-lg font-black text-lg tracking-wider flex items-center space-x-2 border border-blue-500/30 shadow-md">
-                <i class="fa-solid fa-plane-departure text-blue-400"></i>
-                <span>GOFAB</span>
-            </div>
-            <div class="flex flex-col">
-                <span class="text-xs font-bold text-white tracking-wide uppercase">Força Aérea Brasileira</span>
-                <span class="text-[11px] text-blue-400 font-medium">EMAER • 2SC3 / Seção de Sobrevoo</span>
-            </div>
+            <span class="bg-cyan-600 text-white font-bold px-3 py-1 rounded text-sm tracking-wider">GOFAB</span>
+            <h1 class="text-lg font-semibold tracking-wide">Homologação da Versão 2</h1>
         </div>
-
-        <div class="hidden md:flex items-center space-x-2 text-xs text-slate-400 bg-slate-950/60 px-4 py-1.5 rounded-full border border-slate-800">
-            <span>Homologação das Unidades Aéreas</span>
-            <span class="text-slate-600">•</span>
-            <span class="text-emerald-400 font-semibold">GOFAB Versão 2.0</span>
-        </div>
-
-        <!-- Indicadores de Slides (Dots) -->
-        <div class="flex items-center space-x-2" id="dotsContainer">
-            <!-- Gerado via JS -->
+        <div class="text-sm text-slate-400 font-medium">
+            Slide <span id="current-slide" class="text-cyan-400 font-bold">1</span> de <span id="total-slides">5</span>
         </div>
     </header>
 
-    <!-- Conteúdo dos Slides -->
-    <main class="flex-1 relative w-full h-full overflow-y-auto overflow-x-hidden p-4 md:p-8 flex items-center justify-center">
+    <!-- Main Presentation Container -->
+    <main class="flex-grow flex items-center justify-center p-4 md:p-8">
+        <div class="w-full max-w-5xl bg-slate-800/90 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden min-h-[500px] flex flex-col justify-between p-6 md:p-10">
 
-        <!-- SLIDE 1: CAPA -->
-        <section class="slide active w-full max-w-6xl flex-col items-center justify-center text-center py-4">
-            <div class="relative z-10 space-y-6 max-w-4xl">
-                <div class="inline-flex items-center space-x-2 px-4 py-1.5 bg-blue-900/40 border border-blue-500/40 text-blue-300 rounded-full text-xs font-bold tracking-wider uppercase mb-1 shadow-inner">
-                    <i class="fa-solid fa-shield-halved text-blue-400"></i>
-                    <span>Estado-Maior da Aeronáutica — 2SC3</span>
+            <!-- SLIDE 1: Capa -->
+            <div class="slide active flex-col justify-between h-full space-y-6">
+                <div class="space-y-4 my-auto text-center">
+                    <span class="inline-block bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wider uppercase mb-2">Projeto GOFAB V2</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">Homologação da Versão 2</h2>
+                    <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">Eliminação de redundâncias, fim dos arquivos Word de planejamento/endereçamento e centralização unificada de dados.</p>
                 </div>
-                
-                <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white leading-tight">
-                    GOFAB <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-300 to-emerald-400">Versão 2</span>
-                </h1>
-                
-                <p class="text-lg md:text-2xl text-slate-300 font-light max-w-3xl mx-auto leading-relaxed">
-                    Modernização do Controle de Missões Internacionais &amp; Eliminação do Retrabalho em Word
-                </p>
-
-                <div class="pt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
-                    <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl backdrop-blur hover:border-slate-700 transition">
-                        <div class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center mb-3 text-lg">
-                            <i class="fa-solid fa-file-word"></i>
-                        </div>
-                        <h3 class="font-bold text-white text-base">Eliminação dos Arquivos Word</h3>
-                        <p class="text-slate-400 text-xs mt-1 leading-relaxed">Fim do preenchimento manual do "Word de Planejamento" e do "Word de Endereçamento".</p>
-                    </div>
-
-                    <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl backdrop-blur hover:border-slate-700 transition">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-3 text-lg">
-                            <i class="fa-solid fa-database"></i>
-                        </div>
-                        <h3 class="font-bold text-white text-base">Entrada Única de Dados</h3>
-                        <p class="text-slate-400 text-xs mt-1 leading-relaxed">Esquadrão insere os dados nativamente no GOFAB V2, garantindo reuso completo das informações.</p>
-                    </div>
-
-                    <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl backdrop-blur hover:border-slate-700 transition">
-                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-3 text-lg">
-                            <i class="fa-solid fa-biohazard"></i>
-                        </div>
-                        <h3 class="font-bold text-white text-base">Padronização ICAO Doc 9284</h3>
-                        <p class="text-slate-400 text-xs mt-1 leading-relaxed">Tabela de Material Perigoso (Dangerous Goods) integrada ao próprio sistema.</p>
-                    </div>
-                </div>
-
-                <div class="pt-4">
-                    <button onclick="changeSlide(1)" class="px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold rounded-xl shadow-lg hover:shadow-blue-500/25 transition-all flex items-center space-x-3 mx-auto">
-                        <span>Iniciar Apresentação</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                <div class="border-t border-slate-700 pt-4 flex justify-between items-center text-xs md:text-sm text-slate-400">
+                    <span>Estado-Maior da Aeronáutica • 2SC3</span>
+                    <span>Força Aérea Brasileira</span>
                 </div>
             </div>
-        </section>
 
-        <!-- SLIDE 2: AMPARO NORMATIVO E OBJETIVOS -->
-        <section class="slide w-full max-w-6xl flex-col justify-center py-2">
-            <div class="mb-4 border-b border-slate-800 pb-3 flex justify-between items-end">
+            <!-- SLIDE 2: Amparo Normativo & Objetivo -->
+            <div class="slide flex-col justify-between h-full space-y-6">
                 <div>
-                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wider">Diretrizes &amp; Regulamentação</span>
-                    <h2 class="text-3xl font-extrabold text-white mt-0.5">Amparo Normativo &amp; Objetivos</h2>
-                </div>
-                <span class="text-slate-500 text-xs font-semibold bg-slate-900 px-3 py-1 rounded-md border border-slate-800">Slide 02 / 05</span>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- Amparo Normativo -->
-                <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-6 relative flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center space-x-3 mb-4">
-                            <span class="p-3 bg-blue-500/20 text-blue-400 rounded-xl border border-blue-500/30">
-                                <i class="fa-solid fa-scale-balanced text-xl"></i>
-                            </span>
-                            <div>
-                                <h3 class="text-lg font-bold text-white">RICA 20-8/2025</h3>
-                                <p class="text-xs text-slate-400">Regulamento Interno do EMAER</p>
-                            </div>
-                        </div>
-
-                        <div class="bg-slate-950/80 border-l-4 border-blue-500 p-4 rounded-r-xl my-4">
-                            <p class="text-slate-200 font-mono text-xs leading-relaxed">
-                                <span class="font-bold text-blue-400">Art. 34.</span> À 2SC3 compete:
-                            </p>
-                            <p class="text-slate-300 italic text-sm mt-2 pl-2">
-                                "II - coordenar as solicitações para voo, com ou sem pouso, de aeronaves militares ou civis públicas brasileiras no exterior;"
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="mt-2 pt-3 border-t border-slate-800/80 flex items-center space-x-2 text-xs text-slate-400">
-                        <i class="fa-solid fa-circle-check text-emerald-400"></i>
-                        <span>Competência institucional exclusiva para tratativas de sobrevoo internacional.</span>
-                    </div>
-                </div>
-
-                <!-- Objetivos para as Unidades Aéreas -->
-                <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center space-x-3 mb-4">
-                            <span class="p-3 bg-emerald-500/20 text-emerald-400 rounded-xl border border-emerald-500/30">
-                                <i class="fa-solid fa-bullseye text-xl"></i>
-                            </span>
-                            <div>
-                                <h3 class="text-lg font-bold text-white">Objetivos da Homologação V2</h3>
-                                <p class="text-xs text-slate-400">Compromissos de Modernização</p>
-                            </div>
-                        </div>
-
-                        <ul class="space-y-3.5 my-2">
-                            <li class="flex items-start space-x-3 bg-slate-950/50 p-3 rounded-xl border border-slate-800">
-                                <i class="fa-solid fa-laptop-code text-blue-400 mt-1"></i>
-                                <div>
-                                    <h4 class="text-xs font-bold text-white uppercase tracking-wider">Apresentar o Novo Formulário GOFAB</h4>
-                                    <p class="text-xs text-slate-400 mt-0.5">Capacitar os esquadrões operacionais para a inclusão direta das solicitações de missão.</p>
-                                </div>
-                            </li>
-
-                            <li class="flex items-start space-x-3 bg-slate-950/50 p-3 rounded-xl border border-slate-800">
-                                <i class="fa-solid fa-triangle-exclamation text-amber-400 mt-1"></i>
-                                <div>
-                                    <h4 class="text-xs font-bold text-white uppercase tracking-wider">Tabela de Cargas Perigosas (ICAO)</h4>
-                                    <p class="text-xs text-slate-400 mt-0.5">Padronização com a <strong class="text-slate-200">Dangerous Goods List (ICAO Doc 9284)</strong> no próprio formulário.</p>
-                                </div>
-                            </li>
-
-                            <li class="flex items-start space-x-3 bg-slate-950/50 p-3 rounded-xl border border-slate-800">
-                                <i class="fa-solid fa-ban text-rose-400 mt-1"></i>
-                                <div>
-                                    <h4 class="text-xs font-bold text-white uppercase tracking-wider">Eliminação de Duplicidade</h4>
-                                    <p class="text-xs text-slate-400 mt-0.5">Acabar com retrabalhos na geração de documentos estáticos em Word e trocas de e-mail.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SLIDE 3: LINHA DO TEMPO DA EVOLUÇÃO -->
-        <section class="slide w-full max-w-6xl flex-col justify-center py-2">
-            <div class="mb-4 border-b border-slate-800 pb-3 flex justify-between items-end">
-                <div>
-                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wider">Histórico dos Sistemas de Missão</span>
-                    <h2 class="text-3xl font-extrabold text-white mt-0.5">Linha do Tempo de Desenvolvimento</h2>
-                </div>
-                <span class="text-slate-500 text-xs font-semibold bg-slate-900 px-3 py-1 rounded-md border border-slate-800">Slide 03 / 05</span>
-            </div>
-
-            <div class="relative py-4">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative z-10">
+                    <span class="text-cyan-400 text-xs font-bold tracking-widest uppercase">Diretrizes</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mt-1 mb-6">Amparo Normativo & Objetivo</h2>
                     
-                    <!-- 2017 -->
-                    <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl flex flex-col justify-between hover:border-slate-700 transition">
-                        <div>
-                            <span class="text-xs font-bold text-blue-400 px-2.5 py-1 bg-blue-500/10 rounded-md border border-blue-500/20 font-mono">2017</span>
-                            <h3 class="text-base font-bold text-white mt-3">Projeto Próprio FAB</h3>
-                            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-                                Antigo sistema de missões internacionais torna-se obsoleto. É iniciado o desenvolvimento de sistema próprio (DTI/CCA-SJ).
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-slate-900/60 border border-slate-700/60 p-5 rounded-xl">
+                            <h3 class="text-cyan-400 font-semibold text-lg mb-2 flex items-center">📋 Amparo Normativo</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                <strong>RICA 20-8/2025</strong><br>
+                                <strong>Art. 34:</strong> À Segunda Subchefia (2SC3) compete coordenar as solicitações para voo, com ou sem pouso, de aeronaves militares ou civis públicas brasileiras no exterior.
                             </p>
                         </div>
-                        <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-500 flex items-center space-x-1.5">
-                            <i class="fa-solid fa-code"></i>
-                            <span>Início do Desenvolvimento</span>
-                        </div>
-                    </div>
-
-                    <!-- 2019 -->
-                    <div class="bg-amber-950/20 border border-amber-800/40 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-700/60 transition">
-                        <div>
-                            <span class="text-xs font-bold text-amber-400 px-2.5 py-1 bg-amber-500/10 rounded-md border border-amber-500/20 font-mono">2019 (Set-Nov)</span>
-                            <h3 class="text-base font-bold text-amber-200 mt-3">AVOEM V2 &amp; Pane Elétrica</h3>
-                            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-                                Entrega da V2 do AVOEM em Setembro. Em Outubro ocorre pane elétrica no prédio, exigindo plano provisório com <strong class="text-amber-300">planilhas e Word</strong>.
+                        <div class="bg-slate-900/60 border border-slate-700/60 p-5 rounded-xl">
+                            <h3 class="text-cyan-400 font-semibold text-lg mb-2 flex items-center">🎯 Objetivo da V2</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Apresentar às unidades aéreas a nova versão do GOFAB, introduzindo o novo formulário unificado, a eliminação de fluxos paralelos em Word e a padronização da tabela de materiais perigosos (Dangerous Goods List - ICAO Doc 9284).
                             </p>
                         </div>
-                        <div class="mt-4 pt-3 border-t border-amber-900/40 text-[11px] text-amber-400/80 flex items-center space-x-1.5">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                            <span>Implementação Provisória</span>
-                        </div>
                     </div>
-
-                    <!-- 2024 -->
-                    <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl flex flex-col justify-between hover:border-slate-700 transition">
-                        <div>
-                            <span class="text-xs font-bold text-emerald-400 px-2.5 py-1 bg-emerald-500/10 rounded-md border border-emerald-500/20 font-mono">2024 (Abr-Set)</span>
-                            <h3 class="text-base font-bold text-white mt-3">Lançamento do GOFAB V1</h3>
-                            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-                                Em Abril é apresentado o GOFAB para substituir as planilhas. Em Setembro atinge-se a desativação total das planilhas.
-                            </p>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] text-emerald-400 flex items-center space-x-1.5">
-                            <i class="fa-solid fa-check-double"></i>
-                            <span>Fim das Planilhas</span>
-                        </div>
-                    </div>
-
-                    <!-- 2026 -->
-                    <div class="bg-gradient-to-b from-blue-950 to-indigo-950 border border-emerald-500/70 p-5 rounded-2xl flex flex-col justify-between glow-box-green relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl"></div>
-                        <div>
-                            <span class="text-xs font-bold text-slate-950 px-2.5 py-1 bg-emerald-400 rounded-md font-mono uppercase">Nov / 2026</span>
-                            <h3 class="text-base font-black text-white mt-3">GOFAB Versão 2</h3>
-                            <p class="text-xs text-emerald-100 mt-2 leading-relaxed">
-                                Implementação da V2 com formulário nativo completo, tabela ICAO e eliminação definitiva de retrabalhos em documentos Word.
-                            </p>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-emerald-500/30 text-[11px] text-emerald-300 font-bold flex items-center space-x-1.5">
-                            <i class="fa-solid fa-rocket"></i>
-                            <span>Homologação Atual</span>
-                        </div>
-                    </div>
-
                 </div>
+                <div class="border-t border-slate-700 pt-4 text-xs text-slate-400 text-right">Slide 2 de 5</div>
             </div>
-        </section>
 
-        <!-- SLIDE 4: FLUXOGRAMA COMPARATIVO -->
-        <section class="slide w-full max-w-6xl flex-col justify-center py-1">
-            <div class="mb-3 border-b border-slate-800 pb-2 flex justify-between items-end">
+            <!-- SLIDE 3: Linha do Tempo -->
+            <div class="slide flex-col justify-between h-full space-y-6">
                 <div>
-                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wider">Mapeamento de Processos</span>
-                    <h2 class="text-2xl font-black text-white">Comparativo dos Fluxogramas</h2>
+                    <span class="text-cyan-400 text-xs font-bold tracking-widest uppercase">Evolução Operacional</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mt-1 mb-6">Linha do Tempo do Sistema</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="bg-slate-900/60 border border-slate-700/60 p-4 rounded-xl border-l-4 border-l-slate-500">
+                            <span class="text-xs font-bold text-slate-400">2017</span>
+                            <h4 class="font-bold text-white mt-1">Início do Projeto</h4>
+                            <p class="text-xs text-slate-300 mt-2">Desenvolvimento próprio pelo DTI/CCA-SJ para substituir o antigo sistema obsoleto.</p>
+                        </div>
+                        <div class="bg-slate-900/60 border border-slate-700/60 p-4 rounded-xl border-l-4 border-l-cyan-500">
+                            <span class="text-xs font-bold text-cyan-400">Set 2019</span>
+                            <h4 class="font-bold text-white mt-1">Entrega da V1</h4>
+                            <p class="text-xs text-slate-300 mt-2">Implantação inicial do Sistema AVOEM, seguida por contingências físicas e planilhas.</p>
+                        </div>
+                        <div class="bg-slate-900/60 border border-slate-700/60 p-4 rounded-xl border-l-4 border-l-indigo-500">
+                            <span class="text-xs font-bold text-indigo-400">Abr 2024</span>
+                            <h4 class="font-bold text-white mt-1">Lançamento GOFAB</h4>
+                            <p class="text-xs text-slate-300 mt-2">Apresentação oficial e transição definitiva em substituição às planilhas em setembro de 2024.</p>
+                        </div>
+                        <div class="bg-slate-900/60 border border-slate-700/60 p-4 rounded-xl border-l-4 border-l-emerald-500">
+                            <span class="text-xs font-bold text-emerald-400">Nov 2026</span>
+                            <h4 class="font-bold text-white mt-1">Homologação V2</h4>
+                            <p class="text-xs text-slate-300 mt-2">Implementação do GOFAB V2 com formulário único integrado e fim do retrabalho em Word.</p>
+                        </div>
+                    </div>
                 </div>
-                <span class="text-slate-500 text-xs font-semibold bg-slate-900 px-3 py-1 rounded-md border border-slate-800">Slide 04 / 05</span>
+                <div class="border-t border-slate-700 pt-4 text-xs text-slate-400 text-right">Slide 3 de 5</div>
             </div>
 
-            <div class="space-y-3.5">
-                
-                <!-- FLUXO ATUAL (COM RETRABALHO) -->
-                <div class="bg-slate-900/90 border border-rose-900/50 rounded-2xl p-4 relative">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="px-3 py-1 bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-lg text-xs font-extrabold uppercase flex items-center gap-2">
-                            <i class="fa-solid fa-triangle-exclamation"></i> FLUXO ATUAL (Word Manual + Triplo Retrabalho)
-                        </span>
- 
+            <!-- SLIDE 4: Fluxograma Comparativo -->
+            <div class="slide flex-col justify-between h-full space-y-4">
+                <div>
+                    <span class="text-cyan-400 text-xs font-bold tracking-widest uppercase">Processos</span>
+                    <h2 class="text-xl md:text-2xl font-bold text-white mt-1 mb-4">Comparativo de Fluxograma: Antes vs GOFAB V2</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <!-- Fluxo Anterior -->
+                        <div class="bg-rose-950/20 border border-rose-900/40 p-4 rounded-xl space-y-2">
+                            <h3 class="text-rose-400 font-bold text-sm flex items-center">❌ Fluxo Anterior (Com Retrabalho em Word)</h3>
+                            <div class="text-xs space-y-1.5 text-slate-300">
+                                <p class="bg-slate-900/80 p-2 rounded border border-slate-700">1. Acionamento: GABAER / COMAE / COMPREP</p>
+                                <p class="bg-slate-900/80 p-2 rounded border border-slate-700">2. Unidade Aérea: Prepara <strong>Word de Planejamento</strong> + Capa GOFAB (Retrabalho)</p>
+                                <p class="bg-slate-900/80 p-2 rounded border border-slate-700">3. Seção de Sobrevoo: Recebe, refaz em <strong>Word de Endereçamento</strong> e redigita no GOFAB (Duplo Retrabalho)</p>
+                                <p class="bg-slate-900/80 p-2 rounded border border-slate-700">4. Envio aos Países / Adidos / MRE</p>
+                            </div>
+                        </div>
+
+                        <!-- Fluxo V2 -->
+                        <div class="bg-emerald-950/20 border border-emerald-900/40 p-4 rounded-xl space-y-2">
+                            <h3 class="text-emerald-400 font-bold text-sm flex items-center">✔ Fluxo GOFAB V2 (Centralizado e Direto)</h3>
+                            <div class="text-xs space-y-1.5 text-slate-300">
+                                <p class="bg-slate-900/80 p-2 rounded border border-slate-700">1. Acionamento: GABAER / COMAE / COMPREP</p>
+                                <p class="bg-slate-900/80 p-2 rounded border border-slate-700">2. Unidade Aérea: Preenche diretamente no <strong>Formulário Nativo do GOFAB</strong> (Única vez)</p>
+                                <p class="bg-slate-900/80 p-2 rounded border border-slate-700">3. Seção de Sobrevoo: Valida e exporta dados direto para os trâmites normativos</p>
+                                <p class="bg-slate-900/80 p-2 rounded border border-slate-700">4. Tramitação Ágil com MRE, Adidos e Países Envolvidos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-slate-700 pt-2 text-xs text-slate-400 text-right">Slide 4 de 5</div>
+            </div>
+
+            <!-- SLIDE 5: Impactos Práticos -->
+            <div class="slide flex-col justify-between h-full space-y-6">
+                <div>
+                    <span class="text-cyan-400 text-xs font-bold tracking-widest uppercase">Resultados</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mt-1 mb-6">Impacto Direto na Operação</h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-5">
+                        <div class="bg-slate-900/60 border border-slate-700/60 p-5 rounded-xl">
+                            <div class="text-2xl mb-2">🔄</div>
+                            <h3 class="text-white font-bold mb-1">Solicitação</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">Fim do preenchimento duplo em Word. Dados inseridos direto na plataforma com validação imediata.</p>
+                        </div>
+                        <div class="bg-slate-900/60 border border-slate-700/60 p-5 rounded-xl">
+                            <div class="text-2xl mb-2">✏️</div>
+                            <h3 class="text-white font-bold mb-1">Modificação</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">Aproveitamento integral do histórico de dados da missão, eliminando retrabalho de reescrita.</p>
+                        </div>
+                        <div class="bg-slate-900/60 border border-slate-700/60 p-5 rounded-xl">
+                            <div class="text-2xl mb-2">🗑️</div>
+                            <h3 class="text-white font-bold mb-1">Cancelamento</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">Registro rastreável e unificado, garantindo auditoria e transparência em tempo real para a 2SC3.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-slate-700 pt-4 text-xs text-slate-400 text-right">Slide 5 de 5</div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <footer class="bg-slate-800 border-t border-slate-700 px-6 py-4 flex justify-between items-center shadow-lg">
+        <button onclick="changeSlide(-1)" id="prev-btn" class="bg-slate-700 hover:bg-slate-600 text-white px-5 py-2.5 rounded-lg font-medium text-sm transition disabled:opacity-40 disabled:cursor-not-allowed">
+            ← Anterior
+        </button>
+        <span class="text-xs text-slate-400 hidden sm:inline">Use as setas do teclado ou os botões para navegar</span>
+        <button onclick="changeSlide(1)" id="next-btn" class="bg-cyan-600 hover:bg-cyan-500 text-white px-5 py-2.5 rounded-lg font-medium text-sm transition disabled:opacity-40 disabled:cursor-not-allowed">
+            Próximo →
+        </button>
+    </footer>
+
+    <!-- JavaScript Control Script -->
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlidesElement = document.getElementById('total-slides');
+        const currentSlideElement = document.getElementById('current-slide');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        totalSlidesElement.textContent = slides.length;
+
+        function updateSlideView() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlideIndex) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            currentSlideElement.textContent = currentSlideIndex + 1;
+            prevBtn.disabled = currentSlideIndex === 0;
+            nextBtn.disabled = currentSlideIndex === slides.length - 1;
+        }
+
+        function changeSlide(direction) {
+            const newIndex = currentSlideIndex + direction;
+            if (newIndex >= 0 && newIndex < slides.length) {
+                currentSlideIndex = newIndex;
+                updateSlideView();
+            }
+        }
+
+        // Navegação por teclado (Setas Esquerda e Direita)
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                changeSlide(1);
+            } else if (event.key === 'ArrowLeft') {
+                changeSlide(-1);
+            }
+        });
+
+        // Inicializar estado dos botões
+        updateSlideView();
+    </script>
+</body>
+</html>
